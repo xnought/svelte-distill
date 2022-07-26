@@ -1,5 +1,4 @@
 <script>
-	import Test from "./Test.svelte";
 	export let data = {
 		authors: [
 			{
