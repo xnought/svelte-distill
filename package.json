@@ -1,6 +1,6 @@
 {
   "name": "svelte-distill",
-  "version": "0.0.010",
+  "version": "0.0.11",
   "private": false,
   "main": "index.js",
   "scripts": {
