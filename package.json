@@ -10,7 +10,7 @@
     "delete": "rm -fr lib",
     "copy": "mkdir lib && cp src/components/* lib && cp package.json lib/package.json && cp README.md lib/README.md",
     "prepub": "npm run delete && npm run copy",
-    "pub":"cd lib && npm publish",
+    "pub": "cd lib && npm publish",
     "postpub": "npm run delete"
   },
   "devDependencies": {
