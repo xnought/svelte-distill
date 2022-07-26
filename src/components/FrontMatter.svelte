@@ -1,6 +1,5 @@
 <script>
-	import { onMount } from "svelte";
-
+	import Test from "./Test.svelte";
 	export let data = {
 		authors: [
 			{
@@ -13,22 +12,44 @@
 		published: "01/01/01",
 		doi: "Dobby On Ibuprofen",
 	};
-
-	function compose(data) {
-		return JSON.stringify(data, null, 4);
-	}
-	let container;
-	onMount(() => {
-		let script = document.createElement("script");
-		script.type = "text/json";
-		let frontMatter = document.createElement("d-front-matter");
-		const by = document.createElement("d-byline");
-
-		script.innerHTML = compose(data);
-		frontMatter.appendChild(script);
-		container.appendChild(frontMatter);
-		container.appendChild(by);
-	});
+	export let overrideDOI = false;
+	export let override = {
+		name: "name",
+		innerHTML: "hello!",
+	};
 </script>
 
-<div bind:this={container} />
+<d-byline>
+	<div class="byline grid">
+		<div class="authors-affiliations grid">
+			<h3>Authors</h3>
+			<h3>Affiliations</h3>
+
+			{#each data.authors as entry}
+				<p class="author">
+					<a class="name" href={entry.authorURL}>{entry.author}</a>
+				</p>
+				<p class="affiliation">
+					<a class="affiliation" href={entry.affiliationURL}
+						>{entry.affiliation}</a
+					>
+				</p>
+			{/each}
+		</div>
+		<div>
+			<h3>Published</h3>
+			<p>{data.published}</p>
+		</div>
+		{#if !overrideDOI}
+			<div>
+				<h3>DOI</h3>
+				<p><a href="https://doi.org/{data.doi}">{data.doi}</a></p>
+			</div>
+		{:else}
+			<div>
+				<h3>{override.name}</h3>
+				<p>{@html override.innerHTML}</p>
+			</div>
+		{/if}
+	</div>
+</d-byline>

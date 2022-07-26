@@ -33,9 +33,10 @@
 					affiliationURL: "https://en.wikipedia.org/wiki/Earth",
 				},
 			],
-			published: "01/01/1843",
-			doi: "Dobby On Ibuprofen",
+			published: "01/01/2002",
 		}}
+		overrideDOI
+		override={{name: "updated", innerHTML: "01/01/2022" }}
 	/>
 
 	<Article>
